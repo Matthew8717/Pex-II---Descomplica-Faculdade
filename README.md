@@ -9,7 +9,6 @@ Landing Page responsiva desenvolvida para o estúdio **Rose Manicure & Pedicure*
 ## 🖼️ Prévia do Projeto
 
 ![Prévia da Tela Inicial](preview/home.png)
-*(Dica: Substitua o caminho acima pelo nome da pasta e da imagem que você subir no repositório)*
 
 ---
 
