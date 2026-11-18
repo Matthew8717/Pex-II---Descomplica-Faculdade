@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Manicure & Pedicure | Manicure, Pedicure e Massagem</title>
+    
+    <!-- Google Fonts: Cormorant Garamond (Títulos) e Plus Jakarta Sans (Textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores e Fontes Personalizadas no Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#FAF7F5',
+                        'nude-light': '#F3ECE7',
+                        'nude-medium': '#E5D7CE',
+                        'rose-soft': '#D49A89',
+                        'terracotta': '#B87461',
+                        'terracotta-dark': '#9A5B4A',
+                        'espresso': '#3B2D28',
+                        'taupe': '#75635C',
+                        'gold-accent': '#C5A059'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(59, 45, 40, 0.06)',
+                        'card': '0 15px 35px -10px rgba(184, 116, 97, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-espresso font-sans antialiased selection:bg-rose-soft selection:text-white overflow-x-hidden">
+
+    <script>
+        const STUDIO_WHATSAPP = "5513981719124"; 
+        const STUDIO_NAME = "Rose Manicure & Pedicure";
+    </script>
+
+    <!-- 1. CABEÇALHO (NAVBAR) FIXO -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-cream/90 backdrop-blur-md border-b border-nude-medium/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo / Nome do Estúdio -->
+                <a href="#inicio" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center text-terracotta group-hover:bg-terracotta group-hover:text-white transition-colors duration-300">
+                        <i class="fa-solid fa-spa text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-wide text-espresso block leading-none">Rose Manicure & Pedicure</span>
+                        <span class="text-[11px] uppercase tracking-[0.2em] text-taupe block mt-0.5">Estúdio & Bem-Estar</span>
+                    </div>
+                </a>
+
+                <!-- Links de Navegação Desktop -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-sm font-medium text-taupe hover:text-terracotta transition-colors">Início</a>
+                    <a href="#servicos" class="text-sm font-medium text-taupe hover:text-terracotta transition-colors">Serviços</a>
+                    <a href="#diferenciais" class="text-sm font-medium text-taupe hover:text-terracotta transition-colors">Sobre Nós</a>
+                    <a href="#depoimentos" class="text-sm font-medium text-taupe hover:text-terracotta transition-colors">Depoimentos</a>
+                    <a href="#contato" class="text-sm font-medium text-taupe hover:text-terracotta transition-colors">Contato</a>
+                </nav>
+
+                <!-- Botão CTA Desktop + Botão Menu Mobile -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openBookingModal()" class="hidden sm:inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-dark text-white text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all duration-300 cursor-pointer">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Agendar Horário</span>
+                    </button>
+
+                    <!-- Botão Menu Hambúrguer (Mobile) -->
+                    <button id="mobile-menu-btn" aria-label="Abrir menu" class="md:hidden p-2.5 rounded-xl text-espresso hover:bg-nude-light transition-colors">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream border-b border-nude-medium px-4 pt-2 pb-6 space-y-2 shadow-lg">
+            <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-espresso hover:bg-nude-light">Início</a>
+            <a href="#servicos" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-espresso hover:bg-nude-light">Serviços</a>
+            <a href="#diferenciais" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-espresso hover:bg-nude-light">Sobre Nós</a>
+            <a href="#depoimentos" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-espresso hover:bg-nude-light">Depoimentos</a>
+            <a href="#contato" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-espresso hover:bg-nude-light">Contato</a>
+            <div class="pt-2 px-2">
+                <button onclick="openBookingModal()" class="w-full flex justify-center items-center gap-2 bg-terracotta text-white font-medium py-3.5 rounded-full shadow-sm">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>Agendar Horário Agora</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. SEÇÃO HERO -->
+    <section id="inicio" class="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
+        <!-- Elemento Decorativo de Fundo -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-nude-light/60 rounded-bl-[100px] -z-10 hidden lg:block"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna de Texto -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nude-light border border-nude-medium text-terracotta text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>Seu refúgio de autocuidado</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-espresso leading-[1.15]">
+                        Realce sua beleza natural e renove suas <span class="italic text-terracotta font-semibold">energias.</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-taupe leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        Um espaço pensado nos mínimos detalhes para você desacelerar. Unhas impecáveis, cuidado profundo com os pés e massagens terapêuticas com atendimento exclusivo e acolhedor.
+                    </p>
+                    
+                    <!-- Botões CTA -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-terracotta hover:bg-terracotta-dark text-white font-medium px-8 py-4 rounded-full shadow-card hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Agendar pelo WhatsApp</span>
+                        </button>
+                        
+                        <a href="#servicos" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white hover:bg-nude-light text-espresso border border-nude-medium font-medium px-8 py-4 rounded-full transition-all duration-300">
+                            <span>Conhecer Serviços</span>
+                            <i class="fa-solid fa-arrow-down text-xs text-terracotta"></i>
+                        </a>
+                    </div>
+
+                    <!-- Mini Prova Social -->
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-sm text-taupe">
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex text-gold-accent text-xs">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="font-semibold text-espresso">4.9/5</span>
+                            <span>(80+ avaliações)</span>
+                        </div>
+                        <span class="text-nude-medium">|</span>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-shield-heart text-terracotta"></i>
+                            <span>100% Esterilizado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Visual Elegante -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Moldura Principal -->
+                        <div class="rounded-t-[160px] rounded-b-3xl overflow-hidden shadow-2xl border-8 border-white bg-nude-medium aspect-[4/5] relative">
+                            <img 
+                                src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80" 
+                                alt="Momento de relaxamento e massagem no estúdio" 
+                                class="w-full h-full object-cover object-center"
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x1000/E5D7CE/3B2D28?text=Essencia+%26+Beleza';"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-espresso/30 via-transparent to-transparent"></div>
+                        </div>
+
+                        <!-- Card Flutuante 1: Manicure -->
+                        <div class="hidden sm:flex items-center gap-3 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-soft border border-nude-light absolute -left-6 bottom-12 max-w-[230px]">
+                            <div class="w-11 h-11 rounded-full bg-rose-soft/20 text-terracotta flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-hand-sparkles text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="font-serif font-bold text-espresso text-base leading-tight">Unhas & Spa</p>
+                                <p class="text-xs text-taupe mt-0.5">Esmaltação impecável e hidratação profunda</p>
+                            </div>
+                        </div>
+
+                        <!-- Card Flutuante 2: Bem-estar -->
+                        <div class="hidden sm:flex items-center gap-3 bg-white/95 backdrop-blur-sm p-3.5 rounded-2xl shadow-soft border border-nude-light absolute -right-4 top-14">
+                            <div class="w-10 h-10 rounded-full bg-gold-accent/20 text-gold-accent flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <div class="pr-2">
+                                <p class="text-xs font-semibold text-espresso">Ambiente Climatizado</p>
+                                <p class="text-[11px] text-taupe">Aromaterapia & Conforto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SEÇÃO DE SERVIÇOS COM FILTROS INTERATIVOS -->
+    <section id="servicos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Cabeçalho da Seção -->
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">Menu de Tratamentos</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-espresso mt-2">
+                    Cuidados pensados para você
+                </h2>
+                <p class="text-taupe mt-3 text-sm sm:text-base">
+                    Escolha o procedimento ideal para o seu momento. Todos os atendimentos incluem materiais descartáveis ou esterilizados em autoclave.
+                </p>
+            </div>
+
+            <!-- Botões de Filtro por Categoria -->
+            <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-12" role="tablist">
+                <button onclick="filterServices('todos')" data-filter="todos" class="filter-btn active px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-espresso text-white shadow-sm cursor-pointer">
+                    Todos os Serviços
+                </button>
+                <button onclick="filterServices('manicure')" data-filter="manicure" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-nude-light text-taupe hover:bg-nude-medium/70 cursor-pointer">
+                    <i class="fa-solid fa-hand-sparkles mr-1.5 text-terracotta"></i>Manicure
+                </button>
+                <button onclick="filterServices('pedicure')" data-filter="pedicure" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-nude-light text-taupe hover:bg-nude-medium/70 cursor-pointer">
+                    <i class="fa-solid fa-shoe-prints mr-1.5 text-terracotta"></i>Pedicure
+                </button>
+                <button onclick="filterServices('massagem')" data-filter="massagem" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-nude-light text-taupe hover:bg-nude-medium/70 cursor-pointer">
+                    <i class="fa-solid fa-spa mr-1.5 text-terracotta"></i>Massagem
+                </button>
+            </div>
+
+            <!-- Grid de Cards de Serviços (Renderizado via JS para fácil manutenção) -->
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Os cards são inseridos dinamicamente pelo script abaixo -->
+            </div>
+
+            <!-- Banner Combo Especial -->
+            <div class="mt-14 bg-gradient-to-r from-nude-light via-cream to-nude-light border border-nude-medium rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-soft">
+                <div class="flex items-start sm:items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
+                    <div class="w-14 h-14 rounded-2xl bg-terracotta text-white flex items-center justify-center shrink-0 mx-auto sm:mx-0 shadow-sm">
+                        <i class="fa-solid fa-gift text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-terracotta">Combo Queridinho</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-espresso">Pé e Mão Clássicos + Hidratação</h3>
+                        <p class="text-sm text-taupe mt-1">O cuidado completo para suas mãos e pés com valor especial e esmaltação de longa duração.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full md:w-auto">
+                    <div class="text-center md:text-right">
+                        <span class="text-xs text-taupe block">Por apenas</span>
+                        <span class="font-serif text-3xl font-bold text-espresso">R$ 65,00</span>
+                    </div>
+                    <button onclick="openBookingModal('Combo Pé e Mão Clássicos + Hidratação (R$ 65,00)')" class="w-full sm:w-auto bg-espresso hover:bg-terracotta text-white font-medium px-6 py-3.5 rounded-full transition-colors duration-300 text-sm cursor-pointer">
+                        Agendar Combo
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. SEÇÃO POR QUE NOS ESCOLHER / DIFERENCIAIS -->
+    <section id="diferenciais" class="py-20 bg-cream border-y border-nude-medium/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna Esquerda: Texto e Lista de Diferenciais -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">Nossa Essência</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-espresso mt-2">
+                            Excelência, higiene rigorosa e acolhimento em cada detalhe
+                        </h2>
+                        <p class="text-taupe mt-4 leading-relaxed">
+                            Acreditamos que cuidar das unhas ou fazer uma massagem vai muito além da estética: é uma pausa necessária na rotina corrida para você se reconectar consigo mesma.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Diferencial 1 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-soft border border-nude-light">
+                            <div class="w-11 h-11 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-pump-medical text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">100% Esterilizado</h3>
+                            <p class="text-sm text-taupe leading-relaxed">
+                                Alicates e espátulas esterilizados em autoclave em envelopes individuais abertos na sua frente, além de lixas e palitos descartáveis.
+                            </p>
+                        </div>
+
+                        <!-- Diferencial 2 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-soft border border-nude-light">
+                            <div class="w-11 h-11 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-gem text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">Produtos Premium</h3>
+                            <p class="text-sm text-taupe leading-relaxed">
+                                Trabalhamos apenas com marcas líderes do mercado, esmaltes hipoalergênicos, óleos essenciais puros e cremes de alta absorção.
+                            </p>
+                        </div>
+
+                        <!-- Diferencial 3 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-soft border border-nude-light">
+                            <div class="w-11 h-11 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-wind text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">Ambiente Relaxante</h3>
+                            <p class="text-sm text-taupe leading-relaxed">
+                                Sala climatizada, maca ergonômica aquecida, música ambiente suave e aromaterapia para você esquecer do estresse lá fora.
+                            </p>
+                        </div>
+
+                        <!-- Diferencial 4 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-soft border border-nude-light">
+                            <div class="w-11 h-11 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center mb-4">
+                                <i class="fa-regular fa-clock text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-espresso mb-1.5">Hora Marcada</h3>
+                            <p class="text-sm text-taupe leading-relaxed">
+                                Respeitamos o seu tempo. Atendimento individualizado sem espera e sem pressa para entregar o melhor resultado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Imagem do Estúdio -->
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white aspect-[3/4]">
+                        <img 
+                            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80" 
+                            alt="Cuidados com manicure e unhas bem feitas" 
+                            class="w-full h-full object-cover"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x800/F3ECE7/3B2D28?text=Cuidado+%26+Delicadeza';"
+                        >
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-espresso/85 via-espresso/40 to-transparent p-6 text-white">
+                            <p class="font-serif italic text-xl">"O autocuidado não é luxo, é uma necessidade para manter o corpo e a mente em equilíbrio."</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SEÇÃO DE DEPOIMENTOS -->
+    <section id="depoimentos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">O que dizem nossas clientes</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-espresso mt-2">
+                    Histórias de quem já se cuidou conosco
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-cream p-8 rounded-3xl border border-nude-medium/60 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold-accent text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-taupe text-sm sm:text-base italic leading-relaxed">
+                            "Simplesmente impecável! Faço esmaltação em gel e spa dos pés todo mês e a durabilidade é incrível. O cuidado com a esterilização dos materiais me passa muita segurança."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-nude-medium/50">
+                        <div class="w-10 h-10 rounded-full bg-rose-soft text-white font-serif font-bold flex items-center justify-center">
+                            Em
+                        </div>
+                        <div>
+                            <p class="font-semibold text-espresso text-sm">Emilia</p>
+                            <p class="text-xs text-taupe">Cliente há 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-cream p-8 rounded-3xl border border-nude-medium/60 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold-accent text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-taupe text-sm sm:text-base italic leading-relaxed">
+                            "Eu e a minha mãe fazemos unha com ela deste de que a aconheci, há mais de 20 anos, e o trabalho dela é sempre incrvíel e delicado."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-nude-medium/50">
+                        <div class="w-10 h-10 rounded-full bg-terracotta text-white font-serif font-bold flex items-center justify-center">
+                            Ve
+                        </div>
+                        <div>
+                            <p class="font-semibold text-espresso text-sm">Vera</p>
+                            <p class="text-xs text-taupe">Massagem & Bem-Estar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="bg-cream p-8 rounded-3xl border border-nude-medium/60 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold-accent text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-taupe text-sm sm:text-base italic leading-relaxed">
+                            "Atendimento pontualíssimo e mão super leve na cutilagem, não tira bife nenhum! Recomendo de olhos fechados para quem busca qualidade e um atendimento humano."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-nude-medium/50">
+                        <div class="w-10 h-10 rounded-full bg-espresso text-white font-serif font-bold flex items-center justify-center">
+                            Ir
+                        </div>
+                        <div>
+                            <p class="font-semibold text-espresso text-sm">Irací</p>
+                            <p class="text-xs text-taupe">Manicure & Pedicure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. RODAPÉ COMPLETO -->
+    <footer id="contato" class="bg-espresso text-nude-light pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Coluna 1: Sobre -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-full bg-terracotta flex items-center justify-center text-white">
+                            <i class="fa-solid fa-spa"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold text-white">Rose Maninure & Pedicure</span>
+                    </div>
+                    <p class="text-sm text-nude-medium leading-relaxed">
+                        Seu espaço dedicado à beleza das unhas e ao equilíbrio do corpo. Atendimento com hora marcada para proporcionar exclusividade e bem-estar.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://www.instagram.com/rosangela_bezerra_santana?utm_source=qr&bqrl=MWdwa211dmg0bDdxeQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <button onclick="openBookingModal()" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-white/10 hover:bg-terracotta text-white flex items-center justify-center transition-colors cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Links Rápidos -->
+                <div>
+                    <h4 class="font-serif text-xl font-semibold text-white mb-4">Navegação</h4>
+                    <ul class="space-y-2.5 text-sm text-nude-medium">
+                        <li><a href="#inicio" class="hover:text-rose-soft transition-colors">Início</a></li>
+                        <li><a href="#servicos" class="hover:text-rose-soft transition-colors">Nossos Serviços</a></li>
+                        <li><a href="#diferenciais" class="hover:text-rose-soft transition-colors">Diferenciais</a></li>
+                        <li><a href="#depoimentos" class="hover:text-rose-soft transition-colors">Depoimentos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Horário de Funcionamento -->
+                <div>
+                    <h4 class="font-serif text-xl font-semibold text-white mb-4">Horários</h4>
+                    <ul class="space-y-2.5 text-sm text-nude-medium">
+                        <li class="flex justify-between">
+                            <span>Trabalhamos em casa e à domicílio de:</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Segunda a Sexta:</span>
+                            <span class="text-white font-medium">09:00 – 19:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sábado e Domingo:</span>
+                            <span class="text-white font-medium">09:00 – 17:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4: Endereço e Contato -->
+                <div>
+                    <h4 class="font-serif text-xl font-semibold text-white mb-4">Onde Estamos</h4>
+                    <ul class="space-y-3 text-sm text-nude-medium">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-rose-soft mt-1"></i>
+                            <span>Rua Deputado Pinheiro Júnior, n°600<br>Caiçara, Praia Grande - SP</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-rose-soft"></i>
+                            <span>(13) 98171-9124</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span>CPNJ: 23.586.188/0001-05</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-nude-medium/70">
+                <p>&copy; 2026 Rose Manicure & Pedicure. Todos os direitos reservados.</p>
+                <p>Atendimento personalizado com hora marcada.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP (CANTO INFERIOR DIREITO) -->
+    <button 
+        onclick="openBookingModal()" 
+        aria-label="Agendar pelo WhatsApp"
+        class="fixed bottom-6 right-6 z-40 group flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+    >
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="hidden sm:inline text-sm font-semibold pr-1">Agendar Agora</span>
+    </button>
+
+    <!-- ===================================================================== -->
+    <!-- 6. MODAL INTERATIVO DE AGENDAMENTO ONLINE                             -->
+    <!-- ===================================================================== -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-espresso/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-nude-medium transform transition-all animate-fadeIn">
+            
+            <!-- Cabeçalho do Modal -->
+            <div class="bg-nude-light px-6 py-5 flex items-center justify-between border-b border-nude-medium">
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta">Agendamento Rápido</span>
+                    <h3 class="font-serif text-2xl font-bold text-espresso">Reserve seu horário</h3>
+                </div>
+                <button onclick="closeBookingModal()" aria-label="Fechar janela" class="w-9 h-9 rounded-full bg-white text-taupe hover:text-espresso hover:bg-nude-medium/50 flex items-center justify-center transition-colors cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Formulário de Agendamento -->
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="p-6 space-y-4">
+                
+                <!-- Mensagem de Erro / Validação Inline (Substitui alert()) -->
+                <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs px-4 py-3 rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span id="form-error-text">Por favor, preencha todos os campos obrigatórios.</span>
+                </div>
+
+                <!-- Nome da Cliente -->
+                <div>
+                    <label for="client-name" class="block text-xs font-semibold uppercase tracking-wider text-taupe mb-1.5">Seu Nome *</label>
+                    <input type="text" id="client-name" required placeholder="Ex: Ana Paula Silva" class="w-full px-4 py-3 rounded-xl bg-cream border border-nude-medium text-espresso text-sm focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20">
+                </div>
+
+                <!-- Escolha do Serviço -->
+                <div>
+                    <label for="service-select" class="block text-xs font-semibold uppercase tracking-wider text-taupe mb-1.5">Serviço Desejado *</label>
+                    <select id="service-select" required class="w-full px-4 py-3 rounded-xl bg-cream border border-nude-medium text-espresso text-sm focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20">
+                        <option value="" disabled selected>Selecione um serviço...</option>
+                        <!-- Opções preenchidas automaticamente via JS -->
+                    </select>
+                </div>
+
+                <!-- Data e Horário -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="booking-date" class="block text-xs font-semibold uppercase tracking-wider text-taupe mb-1.5">Data Preferida *</label>
+                        <input type="date" id="booking-date" required class="w-full px-4 py-3 rounded-xl bg-cream border border-nude-medium text-espresso text-sm focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20">
+                    </div>
+
+                    <div>
+                        <label for="booking-time" class="block text-xs font-semibold uppercase tracking-wider text-taupe mb-1.5">Período / Horário *</label>
+                        <select id="booking-time" required class="w-full px-4 py-3 rounded-xl bg-cream border border-nude-medium text-espresso text-sm focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20">
+                            <option value="Manhã (09:00 às 12:00)">Manhã (09h às 12h)</option>
+                            <option value="Tarde (13:00 às 16:00)">Tarde (13h às 16h)</option>
+                            <option value="Final da Tarde (16:00 às 19:00)">Final da Tarde (16h às 19h)</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Observações Opcionais -->
+                <div>
+                    <label for="booking-notes" class="block text-xs font-semibold uppercase tracking-wider text-taupe mb-1.5">Observações (Opcional)</label>
+                    <input type="text" id="booking-notes" placeholder="Ex: Tenho alergia a algum produto, preferência de cor..." class="w-full px-4 py-3 rounded-xl bg-cream border border-nude-medium text-espresso text-sm focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/20">
+                </div>
+
+                <!-- Botão Confirmar e Enviar para WhatsApp -->
+                <div class="pt-2">
+                    <button type="submit" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 px-6 rounded-full shadow-md transition-all duration-300 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Confirmar e Enviar no WhatsApp</span>
+                    </button>
+                    <p class="text-[11px] text-center text-taupe mt-2.5">
+                        Você será redirecionada para o WhatsApp com a mensagem pronta para confirmar a disponibilidade.
+                    </p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: DADOS DOS SERVIÇOS, FILTROS E INTEGRAÇÃO COM WHATSAPP     -->
+    <!-- ===================================================================== -->
+    <script>
+        // 1. LISTA DE SERVIÇOS (Fácil de editar preços, tempos e descrições)
+        const servicesData = [
+            // MANICURE
+            {
+                id: 1,
+                category: 'manicure',
+                categoryLabel: 'Manicure',
+                title: 'Manicure Clássica',
+                description: 'Cutilagem cuidadosa, lixamento no formato desejado, hidratação leve e esmaltação tradicional com brilho intenso.',
+                duration: '45 min',
+                price: 'R$ 30,00',
+                popular: false
+            },
+            {
+                id: 2,
+                category: 'manicure',
+                categoryLabel: 'Manicure',
+                title: 'Esmaltação em Gel',
+                description: 'Unhas impecáveis e com brilho espelhado por até 20 dias sem descascar. Secagem imediata na cabine LED.',
+                duration: '1h 15min',
+                price: 'R$ 75,00',
+                popular: true
+            },
+            {
+                id: 3,
+                category: 'manicure',
+                categoryLabel: 'Manicure',
+                title: 'Spa das Mãos',
+                description: 'Esfoliação suave, máscara nutritiva com óleo de amêndoas, massagem relaxante nas mãos e manicure completa.',
+                duration: '1h 10min',
+                price: 'R$ 60,00',
+                popular: false
+            },
+
+            // PEDICURE
+            {
+                id: 4,
+                category: 'pedicure',
+                categoryLabel: 'Pedicure',
+                title: 'Pedicure Clássica',
+                description: 'Corte técnico das unhas, cutilagem delicada, lixamento plantar suave e esmaltação perfeita.',
+                duration: '50 min',
+                price: 'R$ 35,00',
+                popular: false
+            },
+            {
+                id: 5,
+                category: 'pedicure',
+                categoryLabel: 'Pedicure',
+                title: 'Spa dos Pés Revitalizante',
+                description: 'Escaldas-pés com sais relaxantes, esfoliação profunda para remoção de células mortas, hidratação intensiva e pedicure.',
+                duration: '1h 20min',
+                price: 'R$ 80,00',
+                popular: true
+            },
+            {
+                id: 6,
+                category: 'pedicure',
+                categoryLabel: 'Pedicure',
+                title: 'Cutilagem e Hidratação Profunda',
+                description: 'Ideal para quem prefere unhas naturais e saudáveis. Inclui tratamento nutritivo para cutículas e base fortalecedora.',
+                duration: '40 min',
+                price: 'R$ 40,00',
+                popular: false
+            },
+
+            // MASSAGEM
+            {
+                id: 7,
+                category: 'massagem',
+                categoryLabel: 'Massagem',
+                title: 'Massagem Relaxante',
+                description: 'Manobras suaves e contínuas com óleos essenciais que aliviam tensões musculares, reduzem o estresse e acalmam a mente.',
+                duration: '60 min',
+                price: 'R$ 110,00',
+                popular: true
+            },
+            {
+                id: 8,
+                category: 'massagem',
+                categoryLabel: 'Massagem',
+                title: 'Drenagem Linfática',
+                description: 'Técnica de pressão leve e rítmica que estimula o sistema linfático, reduz inchaços, retenção de líquidos e melhora a circulação.',
+                duration: '60 min',
+                price: 'R$ 120,00',
+                popular: false
+            },
+            {
+                id: 9,
+                category: 'massagem',
+                categoryLabel: 'Massagem',
+                title: 'Pedras Quentes & Reflexologia',
+                description: 'Combinação terapêutica do calor das pedras vulcânicas nas costas com estímulos nos pontos reflexos dos pés.',
+                duration: '75 min',
+                price: 'R$ 145,00',
+                popular: false
+            }
+        ];
+
+        // 2. RENDERIZAR CARDS DE SERVIÇOS
+        const servicesGrid = document.getElementById('services-grid');
+        const serviceSelect = document.getElementById('service-select');
+
+        function renderServices(filter = 'todos') {
+            servicesGrid.innerHTML = '';
+            
+            const filtered = filter === 'todos' 
+                ? servicesData 
+                : servicesData.filter(item => item.category === filter);
+
+            filtered.forEach(service => {
+                const fullServiceLabel = `${service.title} (${service.price})`;
+                
+                const card = document.createElement('div');
+                card.className = 'bg-cream hover:bg-white rounded-3xl p-6 sm:p-7 border border-nude-medium/60 hover:border-terracotta/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between relative group';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-nude-light text-terracotta">
+                                ${service.categoryLabel}
+                            </span>
+                            ${service.popular ? `
+                                <span class="text-[11px] font-semibold text-gold-accent flex items-center gap-1">
+                                    <i class="fa-solid fa-star text-[10px]"></i> Mais pedido
+                                </span>
+                            ` : ''}
+                        </div>
+                        
+                        <h3 class="font-serif text-2xl font-bold text-espresso group-hover:text-terracotta transition-colors">
+                            ${service.title}
+                        </h3>
+                        
+                        <p class="text-sm text-taupe mt-2.5 leading-relaxed">
+                            ${service.description}
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-nude-medium/60">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-1.5 text-xs text-taupe">
+                                <i class="fa-regular fa-clock text-terracotta"></i>
+                                <span>${service.duration}</span>
+                            </div>
+                            <span class="font-serif text-2xl font-bold text-espresso">${service.price}</span>
+                        </div>
+                        
+                        <button 
+                            onclick="openBookingModal('${fullServiceLabel.replace(/'/g, "\\'")}')" 
+                            class="w-full py-3 px-4 rounded-full bg-white group-hover:bg-terracotta text-espresso group-hover:text-white border border-nude-medium group-hover:border-terracotta font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                        >
+                            <span>Agendar este serviço</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                servicesGrid.appendChild(card);
+            });
+        }
+
+        // Popular Select do Modal com todos os serviços + Combo
+        function populateServiceSelect() {
+            servicesData.forEach(service => {
+                const option = document.createElement('option');
+                const label = `${service.title} (${service.price})`;
+                option.value = label;
+                option.textContent = `${service.categoryLabel} - ${label}`;
+                serviceSelect.appendChild(option);
+            });
+
+            // Adiciona o combo especial também
+            const comboOption = document.createElement('option');
+            comboOption.value = 'Combo Pé e Mão Clássicos + Hidratação (R$ 65,00)';
+            comboOption.textContent = 'Combo - Pé e Mão Clássicos + Hidratação (R$ 65,00)';
+            serviceSelect.appendChild(comboOption);
+        }
+
+        // 3. FILTRO DE CATEGORIAS
+        function filterServices(category) {
+            // Atualiza visual dos botões
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.remove('bg-nude-light', 'text-taupe', 'hover:bg-nude-medium/70');
+                    btn.classList.add('bg-espresso', 'text-white', 'shadow-sm');
+                } else {
+                    btn.classList.remove('bg-espresso', 'text-white', 'shadow-sm');
+                    btn.classList.add('bg-nude-light', 'text-taupe', 'hover:bg-nude-medium/70');
+                }
+            });
+
+            renderServices(category);
+        }
+
+        // 4. CONTROLE DO MODAL DE AGENDAMENTO
+        const modal = document.getElementById('booking-modal');
+        const dateInput = document.getElementById('booking-date');
+        const formError = document.getElementById('form-error');
+
+        // Define a data mínima no calendário como hoje
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+        dateInput.value = today;
+
+        function openBookingModal(preselectedService = '') {
+            formError.classList.add('hidden');
+            
+            if (preselectedService) {
+                serviceSelect.value = preselectedService;
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Evita rolagem do fundo
+        }
+
+        function closeBookingModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Fechar modal ao clicar fora da caixa branca
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+
+        // 5. ENVIO DO AGENDAMENTO PARA O WHATSAPP
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            
+            const clientName = document.getElementById('client-name').value.trim();
+            const service = serviceSelect.value;
+            const rawDate = dateInput.value;
+            const time = document.getElementById('booking-time').value;
+            const notes = document.getElementById('booking-notes').value.trim();
+
+            if (!clientName || !service || !rawDate || !time) {
+                formError.classList.remove('hidden');
+                return;
+            }
+
+            // Formatar data de AAAA-MM-DD para DD/MM/AAAA
+            const [year, month, day] = rawDate.split('-');
+            const formattedDate = `${day}/${month}/${year}`;
+
+            // Montar mensagem elegante para o WhatsApp
+            let message = `Olá! Gostaria de agendar um horário no *${STUDIO_NAME}* \n\n`;
+            message += `*Nome:* ${clientName}\n`;
+            message += `*Serviço:* ${service}\n`;
+            message += `*Data:* ${formattedDate}\n`;
+            message += `*Horário/Período:* ${time}\n`;
+            
+            if (notes) {
+                message += `*Observações:* ${notes}\n`;
+            }
+            
+            message += `\nAguardo confirmação de disponibilidade. Obrigada!`;
+
+            // Codificar URL e abrir WhatsApp
+            const whatsappUrl = `https://wa.me/${STUDIO_WHATSAPP}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            
+            closeBookingModal();
+        }
+
+        // 6. MENU MOBILE
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fechar menu mobile ao clicar em qualquer link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Inicialização ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices('todos');
+            populateServiceSelect();
+        });
+    </script>
+</body>
+</html>
